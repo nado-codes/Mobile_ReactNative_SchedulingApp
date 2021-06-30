@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2B6BE602-4C61-43A6-9259-B45326C3C003}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SchedulingApp_Mobile</RootNamespace>
+    <AssemblyName>SchedulingApp_Mobile</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="SchedulingApp\.expo-shared\assets.json" />
+    <None Include="SchedulingApp\.gitignore" />
+    <None Include="SchedulingApp\app.json" />
+    <None Include="SchedulingApp\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SchedulingApp\App.js" />
+    <Content Include="SchedulingApp\assets\adaptive-icon.png" />
+    <Content Include="SchedulingApp\assets\favicon.png" />
+    <Content Include="SchedulingApp\assets\icon.png" />
+    <Content Include="SchedulingApp\assets\splash.png" />
+    <Content Include="SchedulingApp\babel.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SchedulingApp\node_modules\.staging\react-native-55ef8295\Libraries\Lists\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

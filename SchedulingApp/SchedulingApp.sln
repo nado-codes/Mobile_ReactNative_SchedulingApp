@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulingApp_Server", "SchedulingApp_Server\SchedulingApp_Server.csproj", "{741A4CF7-37C9-46D9-8C75-7C6EB156C934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulingApp_Mobile", "SchedulingApp_Mobile\SchedulingApp_Mobile.csproj", "{2B6BE602-4C61-43A6-9259-B45326C3C003}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{741A4CF7-37C9-46D9-8C75-7C6EB156C934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{741A4CF7-37C9-46D9-8C75-7C6EB156C934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{741A4CF7-37C9-46D9-8C75-7C6EB156C934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{741A4CF7-37C9-46D9-8C75-7C6EB156C934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B6BE602-4C61-43A6-9259-B45326C3C003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B6BE602-4C61-43A6-9259-B45326C3C003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B6BE602-4C61-43A6-9259-B45326C3C003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B6BE602-4C61-43A6-9259-B45326C3C003}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91ED67F7-1080-4FFB-A305-B825CDCE1D03}
+	EndGlobalSection
+EndGlobal
