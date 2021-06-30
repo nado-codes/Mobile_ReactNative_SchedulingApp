@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchedulingApp_Server", "Sch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulingApp_Mobile", "SchedulingApp_Mobile\SchedulingApp_Mobile.csproj", "{2B6BE602-4C61-43A6-9259-B45326C3C003}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulingApp_Tests", "SchedulingApp_Tests\SchedulingApp_Tests.csproj", "{AC58EDED-D1F6-479A-BFEE-57144086A720}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2B6BE602-4C61-43A6-9259-B45326C3C003}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B6BE602-4C61-43A6-9259-B45326C3C003}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B6BE602-4C61-43A6-9259-B45326C3C003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC58EDED-D1F6-479A-BFEE-57144086A720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC58EDED-D1F6-479A-BFEE-57144086A720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC58EDED-D1F6-479A-BFEE-57144086A720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC58EDED-D1F6-479A-BFEE-57144086A720}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,6 @@
+D:\Storage\Projects\Mobile\ReactNative\ASP\Mobile_SchedulingApp\SchedulingApp\SchedulingApp_Mobile\bin\Debug\SchedulingApp_Mobile.dll.config
+D:\Storage\Projects\Mobile\ReactNative\ASP\Mobile_SchedulingApp\SchedulingApp\SchedulingApp_Mobile\bin\Debug\SchedulingApp_Mobile.dll
+D:\Storage\Projects\Mobile\ReactNative\ASP\Mobile_SchedulingApp\SchedulingApp\SchedulingApp_Mobile\bin\Debug\SchedulingApp_Mobile.pdb
+D:\Storage\Projects\Mobile\ReactNative\ASP\Mobile_SchedulingApp\SchedulingApp\SchedulingApp_Mobile\obj\Debug\SchedulingApp_Mobile.csproj.CoreCompileInputs.cache
+D:\Storage\Projects\Mobile\ReactNative\ASP\Mobile_SchedulingApp\SchedulingApp\SchedulingApp_Mobile\obj\Debug\SchedulingApp_Mobile.dll
+D:\Storage\Projects\Mobile\ReactNative\ASP\Mobile_SchedulingApp\SchedulingApp\SchedulingApp_Mobile\obj\Debug\SchedulingApp_Mobile.pdb
