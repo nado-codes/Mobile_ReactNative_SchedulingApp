@@ -37,21 +37,18 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="SchedulingApp\.expo-shared\assets.json" />
-    <None Include="SchedulingApp\.gitignore" />
-    <None Include="SchedulingApp\app.json" />
-    <None Include="SchedulingApp\package.json" />
+    <None Include="src\.expo-shared\assets.json" />
+    <None Include="src\app.json" />
+    <None Include="src\package.json" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="SchedulingApp\App.js" />
-    <Content Include="SchedulingApp\assets\adaptive-icon.png" />
-    <Content Include="SchedulingApp\assets\favicon.png" />
-    <Content Include="SchedulingApp\assets\icon.png" />
-    <Content Include="SchedulingApp\assets\splash.png" />
-    <Content Include="SchedulingApp\babel.config.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SchedulingApp\node_modules\.staging\react-native-55ef8295\Libraries\Lists\" />
+    <Content Include="src\App.js" />
+    <Content Include="src\assets\adaptive-icon.png" />
+    <Content Include="src\assets\favicon.png" />
+    <Content Include="src\assets\icon.png" />
+    <Content Include="src\assets\splash.png" />
+    <Content Include="src\babel.config.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
