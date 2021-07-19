@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "8oLxK0uhA2qU+6fWmhycMqTFyOwjHK8FWJymB1qVqirE3SodUyx8T+ePAGUo/KSVIWZxasp2uWwiWARk8fVUFA==",
+  "dgSpecHash": "HFsqH7bH8BujgIH0KgiZ7Tan1QYBcUugFC14L2KAPBuSNcZh4gMT0pVRFNmQWNvorSKQ8ck2d4YBHbIL4HHheA==",
   "success": true,
-  "projectFilePath": "D:\\Storage\\Projects\\Mobile\\ReactNative\\ASP\\Mobile_SchedulingApp\\SchedulingApp\\SchedulingApp_Server\\SchedulingApp_Server.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Storage\\Projects\\Mobile\\ReactNative\\SchedulingApp\\SchedulingApp\\SchedulingApp_Server\\SchedulingApp_Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.16\\microsoft.netcore.app.host.win-x64.3.1.16.nupkg.sha512",
+    "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
