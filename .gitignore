@@ -1,4 +1,10 @@
 
 SchedulingApp/SchedulingApp_Server/obj/*
 SchedulingApp/SchedulingApp_Tests/obj/*
-SchedulingApp/SchedulingApp_Mobile/obj/*
+SchedulingApp/SchedulingApp_Mobile/obj/Debug/
+SchedulingApp/SchedulingApp_Mobile/src/obj
+SchedulingApp/SchedulingApp_Mobile/src/node_modules
+SchedulingApp/SchedulingApp_Mobile/src/.expo
+
+*.cache
+SchedulingApp/SchedulingApp_Mobile/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
