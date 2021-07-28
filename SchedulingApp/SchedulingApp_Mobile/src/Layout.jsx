@@ -1,34 +1,43 @@
-import React, { useRef } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React, { useState } from "react";
+import { Image, View, Text, TouchableOpacity } from "react-native";
 import ScheduleView from "./Views/ScheduleView";
 import TasksView from "./Views/TasksView";
-import { NavigationContainer } from "@react-navigation/native";
+import { Tab, TabView, Icon } from "react-native-elements";
+import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 
 export default Layout = () => {
-  const Tab = createBottomTabNavigator();
-  const Nav = createRef();
-
-  /* function MyTabBar({ navigation }) {
-    return (
-      <Button
-        title="Go somewhere"
-        onPress={() => {
-          // Navigate using the `navigation` prop that you received
-          navigation.navigate('SomeScreen');
-        }}
-      />
-    );
-  } */
+  const [index, setIndex] = useState(0);
 
   return (
     <View>
-      <NavigationContainer>
-        <Tab.Navigator /* tabBar={(props) => <MyTabBar {...props} />} */>
-          <Tab.Screen name="Schedule" component={ScheduleView} />
-          <Tab.Screen name="Tasks" component={TasksView} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <Tab value={index} onChange={setIndex}>
+        <Tab.Item
+          title="Schedule"
+          icon={
+            <Icon type="material-community" name="calendar-text" size={22} />
+          }
+          variant={"primary"}
+        />
+        <Tab.Item
+          title="Tasks"
+          icon={
+            <Icon
+              type="material-community"
+              name="order-bool-ascending-variant"
+              size={22}
+            />
+          }
+        />
+      </Tab>
+
+      <TabView value={index} onChange={setIndex}>
+        <TabView.Item style={{ backgroundColor: "red", width: "100%" }}>
+          <ScheduleView />
+        </TabView.Item>
+        <TabView.Item style={{ backgroundColor: "blue", width: "100%" }}>
+          <TasksView />
+        </TabView.Item>
+      </TabView>
     </View>
   );
 };
