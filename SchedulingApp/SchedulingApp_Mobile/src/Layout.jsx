@@ -21,7 +21,7 @@ export default Layout = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: "red" }}>
       <TabElem value={index} onChange={setIndex}>
         <TabElem.Item
           title="Schedule"
@@ -42,7 +42,7 @@ export default Layout = () => {
         />
       </TabElem>
       <TabView value={index} onChange={setIndex} style={{ marginTop: 10 }}>
-        <TabView.Item>
+        <TabView.Item style={{ flex: 1, backgroundColor: "yellow" }}>
           <ScheduleView />
         </TabView.Item>
         <TabView.Item>
