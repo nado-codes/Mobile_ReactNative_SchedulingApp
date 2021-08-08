@@ -1,34 +1,53 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
-import { ListItem, Avatar } from "react-native-elements";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
 
-export default ScheduleView = () => {
-  const list = Array.from(Array(20).keys());
+export default ScheduleView = (/* {list} */) => {
+  // Note: .. DUMMY DATA
+  const makeTime = (value) => {
+    const valueString = value.toString();
 
-  //style={{ flex: 1, width: 200, height: 1000 }}>
+    return `${value < 10 ? "0" : ""}${value}:00`;
+  };
+
+  const itemCount = Array.from(Array(20).keys());
+  const list = itemCount.map((n) => ({
+    time: makeTime(n),
+    task: "Do a thing",
+  }));
+
   return (
-    <View style={{ flex: 1, height: 100, backgroundColor: "red" }}>
+    <View style={{ display: "flex", flex: 1 }}>
       <ScrollView nestedScrollEnabled={true}>
         {list.map((l, i) => (
-          <ListItem
+          <View
             key={i}
-            bottomDivider
-            style={{ width: 1000, height: 50, backgroundColor: "pink" }}
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-start",
+              height: 50,
+            }}
           >
-            <Avatar source={{ uri: l.avatar_url }} />
-            <ListItem.Content>
-              <ListItem.Title>{`Item ${l}`}</ListItem.Title>
-              <ListItem.Subtitle>{`Example Item ${l}`}</ListItem.Subtitle>
-            </ListItem.Content>
-          </ListItem>
+            <View
+              style={{ ...styles.cell, flex: 0.5, backgroundColor: "white" }}
+            >
+              <Text style={{ color: "#000" }}>{l?.time ?? `NO_TIME`}</Text>
+            </View>
+            <View style={{ ...styles.cell, flex: 1 }}>
+              <Text>{l?.task ?? `NO_TASK`}</Text>
+            </View>
+          </View>
         ))}
       </ScrollView>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  cell: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

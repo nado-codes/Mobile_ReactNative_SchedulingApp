@@ -10,29 +10,11 @@ import {
   Text,
   View,
 } from "react-native"; /* No HTML elements in React native. Must use built-in components*/
-import Layout from "./Layout";
+// import Layout from "./Layout";
 import ScheduleView from "./Views/ScheduleView";
 import TasksView from "./Views/TasksView";
 
 export default App = () => {
-  const list = Array.from(Array(20).keys());
-
-  /* return (
-    <View style={styles.container}>
-      <ScrollView>
-        {list.map((l, i) => (
-          <ListItem key={i} bottomDivider style={{ width: 1000, height: 50 }}>
-            <Avatar source={{ uri: l.avatar_url }} />
-            <ListItem.Content>
-              <ListItem.Title>{`Item ${l}`}</ListItem.Title>
-              <ListItem.Subtitle>{`Example Item ${l}`}</ListItem.Subtitle>
-            </ListItem.Content>
-          </ListItem>
-        ))}
-      </ScrollView>
-    </View>
-  ); */
-
   const [activeView, setActiveView] = useState("schedule");
 
   return (
