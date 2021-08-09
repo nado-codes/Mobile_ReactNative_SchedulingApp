@@ -9,6 +9,7 @@ import {
   ScrollView,
   Text,
   View,
+  LogBox,
 } from "react-native"; /* No HTML elements in React native. Must use built-in components*/
 // import Layout from "./Layout";
 import ScheduleView from "./Views/ScheduleView";
@@ -16,6 +17,9 @@ import TasksView from "./Views/TasksView";
 
 export default App = () => {
   const [activeView, setActiveView] = useState("schedule");
+
+  // TODO: Ignore specific warnings in vs code/expo i.e. "Calling %s on the ref of an Animated component is no longer necessary..."
+  LogBox.ignoreAllLogs(true);
 
   return (
     <SafeAreaView style={styles.container}>

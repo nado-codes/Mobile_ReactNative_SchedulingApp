@@ -10,61 +10,18 @@ import DraggableFlatList from "react-native-draggable-flatlist";
 
 export default ScheduleView = (/* {list} */) => {
   // Note: .. DUMMY DATA
-  const makeTime = (value) => {
-    const valueString = value.toString();
+  const dayStartHour = 0;
+  const dayStartMinute = 0;
+  const dayLengthHours = 18;
+  const blocks = dayLengthHours * 4;
 
-    return `${value < 10 ? "0" : ""}${value}:00`;
-  };
+  const leadZero = (val) => (val < 10 ? "0" + val : val);
 
-  const itemCount = Array.from(Array(20).keys());
+  const itemCount = Array.from(Array(blocks).keys());
   const listOrigin = itemCount.map((n) => ({
-    time: makeTime(n),
-    task: "Do a thing",
+    time: `${leadZero(Math.floor(n / 4))}:${leadZero((n % 4) * 15)}`, // `${n < 10 ? "0" : ""}${n}:00`,
+    task: `Do a thing ${n}`,
   }));
-
-  // REACT DRAGGABLE CODE
-  const NUM_ITEMS = 10;
-
-  function getColor(i) {
-    const multiplier = 255 / (NUM_ITEMS - 1);
-    const colorVal = i * multiplier;
-    return `rgb(${colorVal}, ${Math.abs(128 - colorVal)}, ${255 - colorVal})`;
-  }
-
-  const exampleData = [...Array(20)].map((d, index) => {
-    const backgroundColor = getColor(index);
-    return {
-      key: `item-${backgroundColor}`,
-      label: String(index),
-      backgroundColor,
-    };
-  });
-
-  /* const renderItem = useCallback(({ item, index, drag, isActive }) => {
-    return (
-      <TouchableOpacity
-        style={{
-          height: 100,
-          backgroundColor: isActive ? "red" : "green",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        onLongPress={drag}
-      >
-        <Text
-          style={{
-            fontWeight: "bold",
-            color: "white",
-            fontSize: 32,
-          }}
-        >
-          {item[Object.keys(item)[1]]}
-        </Text>
-      </TouchableOpacity>
-    );
-  }, []); */
-
-  // END REACT DRAGGABLE CODE
 
   const [data, setData] = useState(listOrigin);
 
@@ -94,12 +51,16 @@ export default ScheduleView = (/* {list} */) => {
           />
         )}
 
+        {/* Time Cell */}
         <View style={{ ...styles.cell, flex: 0.5, backgroundColor: "white" }}>
           {!isActive && (
-            <Text style={{ color: "#000" }}>{item?.time ?? `NO_TIME`}</Text>
+            <Text style={{ color: "#000" }}>{`${leadZero(
+              Math.floor(index / 4)
+            )}:${leadZero((index % 4) * 15)}`}</Text>
           )}
         </View>
 
+        {/* Task Cell */}
         <View style={{ ...styles.cell, flex: 1 }}>
           <Text>{item?.task ?? `NO_TASK`}</Text>
         </View>
@@ -110,29 +71,6 @@ export default ScheduleView = (/* {list} */) => {
 
   return (
     <View style={{ display: "flex", flex: 1 }}>
-      {/* <ScrollView nestedScrollEnabled={true}>
-        {list.map((l, i) => (
-          <View
-            key={i}
-            style={{
-              flex: 1,
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start",
-              height: 50,
-            }}
-          >
-            <View
-              style={{ ...styles.cell, flex: 0.5, backgroundColor: "white" }}
-            >
-              <Text style={{ color: "#000" }}>{l?.time ?? `NO_TIME`}</Text>
-            </View>
-            <View style={{ ...styles.cell, flex: 1 }}>
-              <Text>{l?.task ?? `NO_TASK`}</Text>
-            </View>
-          </View>
-        ))}
-          </ScrollView> */}
       <DraggableFlatList
         data={data}
         renderItem={renderItem}
