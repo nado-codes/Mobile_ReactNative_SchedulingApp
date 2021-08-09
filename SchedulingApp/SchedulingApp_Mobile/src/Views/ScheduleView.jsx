@@ -93,9 +93,13 @@ export default ScheduleView = (/* {list} */) => {
             }}
           />
         )}
+
         <View style={{ ...styles.cell, flex: 0.5, backgroundColor: "white" }}>
-          <Text style={{ color: "#000" }}>{item?.time ?? `NO_TIME`}</Text>
+          {!isActive && (
+            <Text style={{ color: "#000" }}>{item?.time ?? `NO_TIME`}</Text>
+          )}
         </View>
+
         <View style={{ ...styles.cell, flex: 1 }}>
           <Text>{item?.task ?? `NO_TASK`}</Text>
         </View>
