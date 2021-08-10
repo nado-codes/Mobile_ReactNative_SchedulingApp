@@ -23,6 +23,9 @@ export default App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View
+        style={{ width: "100%", height: 50, backgroundColor: "cyan" }}
+      ></View>
       <View style={{ flex: 1 }}>
         {activeView === "schedule" && <ScheduleView />}
         {activeView === "tasks" && <TasksView />}

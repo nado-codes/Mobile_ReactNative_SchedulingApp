@@ -10,25 +10,39 @@ import DraggableFlatList from "react-native-draggable-flatlist";
 
 export default ScheduleView = (/* {list} */) => {
   // Note: .. DUMMY DATA
-  const dayStartHour = 0;
-  const dayStartMinute = 0;
-  const dayLengthHours = 18;
+  const dayStartHour = 3; // 03
+  const dayStartMinute = 45; //45
+  const dayEndHour = 21; //21
+  const dayEndMinute = 30; //30
+  const dayLengthHours =
+    (new Date(0, 0, 0, dayEndHour, dayEndMinute, 0) -
+      new Date(0, 0, 0, dayStartHour, dayStartMinute, 0)) /
+    1000 /
+    60 /
+    60;
   const blocks = dayLengthHours * 4;
+
+  console.log(new Date(0, 0, 0, dayStartHour));
 
   const leadZero = (val) => (val < 10 ? "0" + val : val);
 
   const itemCount = Array.from(Array(blocks).keys());
-  const listOrigin = itemCount.map((n) => ({
-    time: `${leadZero(Math.floor(n / 4))}:${leadZero((n % 4) * 15)}`, // `${n < 10 ? "0" : ""}${n}:00`,
-    task: `Do a thing ${n}`,
-  }));
+  const listOrigin = itemCount.map((n) => {
+    return {
+      time: `${leadZero(n / 4)}:${leadZero((n % 4) * 15)}`, // `${n < 10 ? "0" : ""}${n}:00`,
+      task: `Do a thing ${n}`,
+    };
+  });
 
   const [data, setData] = useState(listOrigin);
 
-  const renderItem = useCallback(
-    ({ item, index, drag, isActive }) => (
+  const renderItem = useCallback(({ item, index: n, drag, isActive }) => {
+    const hour = leadZero(Math.floor(n / 4) + dayStartHour);
+    const minute = leadZero(Math.floor((n + dayStartMinute / 15) % 4) * 15);
+
+    return (
       <TouchableOpacity
-        key={index}
+        key={n}
         style={{
           flex: 1,
           display: "flex",
@@ -54,9 +68,7 @@ export default ScheduleView = (/* {list} */) => {
         {/* Time Cell */}
         <View style={{ ...styles.cell, flex: 0.5, backgroundColor: "white" }}>
           {!isActive && (
-            <Text style={{ color: "#000" }}>{`${leadZero(
-              Math.floor(index / 4)
-            )}:${leadZero((index % 4) * 15)}`}</Text>
+            <Text style={{ color: "#000" }}>{`${hour}:${minute}`}</Text>
           )}
         </View>
 
@@ -65,9 +77,8 @@ export default ScheduleView = (/* {list} */) => {
           <Text>{item?.task ?? `NO_TASK`}</Text>
         </View>
       </TouchableOpacity>
-    ),
-    []
-  );
+    );
+  }, []);
 
   return (
     <View style={{ display: "flex", flex: 1 }}>
