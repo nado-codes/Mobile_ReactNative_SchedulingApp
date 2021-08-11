@@ -1,12 +1,7 @@
-import React, { useCallback, useState } from "react";
-import {
-  View,
-  Text,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, ScrollView, Text } from "react-native";
 import DraggableFlatList from "react-native-draggable-flatlist";
+import ScheduleBlock from "../Components/ScheduleBlock";
 
 export default ScheduleView = (/* {list} */) => {
   // Note: .. DUMMY DATA
@@ -30,72 +25,73 @@ export default ScheduleView = (/* {list} */) => {
   const listOrigin = itemCount.map((n) => {
     return {
       time: `${leadZero(n / 4)}:${leadZero((n % 4) * 15)}`, // `${n < 10 ? "0" : ""}${n}:00`,
-      task: `Do a thing ${n}`,
+      taskName: `Do a thing ${n}`,
     };
   });
 
   const [data, setData] = useState(listOrigin);
 
-  const renderItem = useCallback(({ item, index: n, drag, isActive }) => {
-    const hour = leadZero(Math.floor(n / 4) + dayStartHour);
-    const minute = leadZero(Math.floor((n + dayStartMinute / 15) % 4) * 15);
+  const [debugText, setDebugText] = useState("");
 
-    return (
-      <TouchableOpacity
-        key={n}
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-start",
-          height: 50,
-        }}
-        onLongPress={drag}
-      >
-        {isActive && (
-          <View
-            style={{
-              position: "absolute",
-              zIndex: 100,
-              width: "100%",
-              height: 50,
-              backgroundColor: "white",
-              opacity: 0.5,
-            }}
-          />
-        )}
+  const debugLog = (text) => {
+    setDebugText(text);
+    // setTimeout(() => setDebugText(""), 3000);
+  };
 
-        {/* Time Cell */}
-        <View style={{ ...styles.cell, flex: 0.5, backgroundColor: "white" }}>
-          {!isActive && (
-            <Text style={{ color: "#000" }}>{`${hour}:${minute}`}</Text>
-          )}
-        </View>
-
-        {/* Task Cell */}
-        <View style={{ ...styles.cell, flex: 1 }}>
-          <Text>{item?.task ?? `NO_TASK`}</Text>
-        </View>
-      </TouchableOpacity>
+  /* useEffect(() => {
+    debugLog(
+      `data changed to: \n${data.map(({ taskName }) => taskName).join(`\n`)}`
     );
-  }, []);
+  }, [data]); */
+
+  const handleBlockPositionChanged = (newData) => {
+    debugLog(newData);
+    /* debugLog(
+      `data was: \n\n${data
+        .map(({ taskName }) => taskName)
+        .join(`\n`)}\n\n\n\n data changing to: \n\n${newData
+        .map(({ taskName }) => taskName)
+        .join(`\n`)}`
+    );*/
+    setData(newData.data);
+  };
+  const handleBlockTextChanged = (index, text) => {
+    const newBlockData = {
+      ...data[index],
+      taskName: text,
+    };
+    // setData([...data.filter((x) => data.indexOf(x) !== index), newBlockData]); */
+
+    return newBlockData.taskName;
+  };
 
   return (
     <View style={{ display: "flex", flex: 1 }}>
-      <DraggableFlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
-        onDragEnd={({ data }) => setData(data)}
-      />
+      <ScrollView>
+        <View style={{ backgroundColor: "red", width: "100%" }}>
+          <Text>{debugText}</Text>
+        </View>
+        <DraggableFlatList
+          data={data}
+          renderItem={(props) => {
+            const { index } = props;
+
+            return (
+              <ScheduleBlock
+                {...props}
+                context={{
+                  text: data[index].taskName,
+                  onTextChanged: handleBlockTextChanged,
+                  dayStartHour,
+                  dayStartMinute,
+                }}
+              />
+            );
+          }}
+          keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
+          onDragEnd={({ data }) => setData(data)}
+        />
+      </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  cell: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
