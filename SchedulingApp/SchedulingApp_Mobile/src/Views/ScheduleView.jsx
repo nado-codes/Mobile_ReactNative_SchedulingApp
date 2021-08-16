@@ -67,10 +67,34 @@ export default ScheduleView = (/* {list} */) => {
 
   return (
     <View style={{ display: "flex", flex: 1 }}>
-      <ScrollView>
-        <View style={{ backgroundColor: "red", width: "100%" }}>
-          <Text>{debugText}</Text>
-        </View>
+      {debugText.length > 0 && (
+        <ScrollView style={{ display: debugText ? "block" : "none" }}>
+          <View style={{ backgroundColor: "red", width: "100%" }}>
+            <Text>{debugText}</Text>
+          </View>
+          <DraggableFlatList
+            data={data}
+            renderItem={(props) => {
+              const { index } = props;
+
+              return (
+                <ScheduleBlock
+                  {...props}
+                  context={{
+                    text: data[index].taskName,
+                    onTextChanged: handleBlockTextChanged,
+                    dayStartHour,
+                    dayStartMinute,
+                  }}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
+            onDragEnd={({ data }) => setData(data)}
+          />
+        </ScrollView>
+      )}
+      {!debugText && (
         <DraggableFlatList
           data={data}
           renderItem={(props) => {
@@ -91,7 +115,7 @@ export default ScheduleView = (/* {list} */) => {
           keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
           onDragEnd={({ data }) => setData(data)}
         />
-      </ScrollView>
+      )}
     </View>
   );
 };

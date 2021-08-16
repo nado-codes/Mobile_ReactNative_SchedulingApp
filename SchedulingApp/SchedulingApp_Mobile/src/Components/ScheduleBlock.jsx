@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -11,6 +11,9 @@ import PropTypes from "prop-types";
 
 export default ScheduleBlock = ({ index, drag, isActive, context }) => {
   const { text, onTextChanged, dayStartHour, dayStartMinute } = context;
+
+  const [myId, setMyId] = useState(undefined);
+
   const [editText, setEditText] = useState(
     text.length > 0 ? text : `Empty Task`
   );
@@ -20,6 +23,10 @@ export default ScheduleBlock = ({ index, drag, isActive, context }) => {
 
   const hour = leadZero(Math.floor(index / 4) + dayStartHour);
   const minute = leadZero(Math.floor((index + dayStartMinute / 15) % 4) * 15);
+
+  useEffect(() => {
+    setMyId(index);
+  }, []);
 
   // .. Enable edit mode
   const handleEditTextClicked = () => {
@@ -73,7 +80,7 @@ export default ScheduleBlock = ({ index, drag, isActive, context }) => {
 
       {/* Task Cell */}
       <View style={{ ...styles.cell, flex: 1 }}>
-        {!isEdit && <Text>{editText}</Text>}
+        {!isEdit && <Text>{`myId=${myId}`}</Text>}
         {isEdit && (
           <Input
             onChangeText={handleTextChanged}
