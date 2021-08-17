@@ -38,12 +38,6 @@ export default ScheduleView = (/* {list} */) => {
     // setTimeout(() => setDebugText(""), 3000);
   };
 
-  /* useEffect(() => {
-    debugLog(
-      `data changed to: \n${data.map(({ taskName }) => taskName).join(`\n`)}`
-    );
-  }, [data]); */
-
   const handleBlockPositionChanged = (newData) => {
     debugLog(newData);
     /* debugLog(
@@ -55,6 +49,7 @@ export default ScheduleView = (/* {list} */) => {
     );*/
     setData(newData.data);
   };
+
   const handleBlockTextChanged = (index, text) => {
     const newBlockData = {
       ...data[index],
@@ -65,6 +60,33 @@ export default ScheduleView = (/* {list} */) => {
     return newBlockData.taskName;
   };
 
+  const ScheduleBlockList = () => (
+    <DraggableFlatList
+      data={data}
+      renderItem={(props) => {
+        const { index } = props;
+        const { taskName, edit } = data[index];
+
+        if (edit) console.log(`Block ${index} is being edited`);
+
+        return (
+          <ScheduleBlock
+            {...props}
+            context={{
+              text: taskName,
+              edit,
+              onTextChanged: handleBlockTextChanged,
+              dayStartHour,
+              dayStartMinute,
+            }}
+          />
+        );
+      }}
+      keyExtractor={(item, index) => `${data.indexOf(item)}`}
+      onDragEnd={({ data }) => setData(data)}
+    />
+  );
+
   return (
     <View style={{ display: "flex", flex: 1 }}>
       {debugText.length > 0 && (
@@ -72,50 +94,10 @@ export default ScheduleView = (/* {list} */) => {
           <View style={{ backgroundColor: "red", width: "100%" }}>
             <Text>{debugText}</Text>
           </View>
-          <DraggableFlatList
-            data={data}
-            renderItem={(props) => {
-              const { index } = props;
-
-              return (
-                <ScheduleBlock
-                  {...props}
-                  context={{
-                    text: data[index].taskName,
-                    onTextChanged: handleBlockTextChanged,
-                    dayStartHour,
-                    dayStartMinute,
-                  }}
-                />
-              );
-            }}
-            keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
-            onDragEnd={({ data }) => setData(data)}
-          />
+          <ScheduleBlockList />
         </ScrollView>
       )}
-      {!debugText && (
-        <DraggableFlatList
-          data={data}
-          renderItem={(props) => {
-            const { index } = props;
-
-            return (
-              <ScheduleBlock
-                {...props}
-                context={{
-                  text: data[index].taskName,
-                  onTextChanged: handleBlockTextChanged,
-                  dayStartHour,
-                  dayStartMinute,
-                }}
-              />
-            );
-          }}
-          keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
-          onDragEnd={({ data }) => setData(data)}
-        />
-      )}
+      {!debugText && <ScheduleBlockList />}
     </View>
   );
 };

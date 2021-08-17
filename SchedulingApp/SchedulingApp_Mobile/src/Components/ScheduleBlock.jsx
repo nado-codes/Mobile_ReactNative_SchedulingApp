@@ -10,7 +10,14 @@ import { Input } from "react-native-elements";
 import PropTypes from "prop-types";
 
 export default ScheduleBlock = ({ index, drag, isActive, context }) => {
-  const { text, onTextChanged, dayStartHour, dayStartMinute } = context;
+  const {
+    text,
+    onStartEdit,
+    onTextChanged,
+    dayStartHour,
+    dayStartMinute,
+    edit,
+  } = context;
 
   const [myId, setMyId] = useState(undefined);
 
@@ -28,9 +35,13 @@ export default ScheduleBlock = ({ index, drag, isActive, context }) => {
     setMyId(index);
   }, []);
 
+  useEffect(() => {
+    setIsEdit(edit);
+  }, [edit]);
+
   // .. Enable edit mode
   const handleEditTextClicked = () => {
-    setIsEdit(true);
+    onStartEdit(index);
   };
 
   // .. When the input field is changed during edit mode
@@ -94,7 +105,14 @@ export default ScheduleBlock = ({ index, drag, isActive, context }) => {
 };
 
 ScheduleBlock.propTypes = {
-  context: PropTypes.shape({ text: PropTypes.string.isRequired }).isRequired,
+  context: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+    onStartEdit: PropTypes.func,
+  }).isRequired,
+};
+
+ScheduleBlock.defaultProps = {
+  context: { onStartEdit: () => {} },
 };
 
 const styles = StyleSheet.create({

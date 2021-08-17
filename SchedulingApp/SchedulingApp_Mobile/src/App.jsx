@@ -19,7 +19,7 @@ export default App = () => {
   const [activeView, setActiveView] = useState("schedule");
 
   // TODO: Ignore specific warnings in vs code/expo i.e. "Calling %s on the ref of an Animated component is no longer necessary..."
-  LogBox.ignoreAllLogs(true);
+  LogBox.ignoreAllLogs();
 
   return (
     <SafeAreaView style={styles.container}>
