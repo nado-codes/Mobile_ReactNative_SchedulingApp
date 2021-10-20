@@ -31,13 +31,6 @@ export default ScheduleView = (/* {list} */) => {
 
   const [data, setData] = useState(listOrigin);
 
-  const [debugText, setDebugText] = useState("");
-
-  const debugLog = (text) => {
-    setDebugText(text);
-    // setTimeout(() => setDebugText(""), 3000);
-  };
-
   const handleBlockPositionChanged = (newData) => {
     debugLog(newData);
     /* debugLog(
@@ -65,16 +58,12 @@ export default ScheduleView = (/* {list} */) => {
       data={data}
       renderItem={(props) => {
         const { index } = props;
-        const { taskName, edit } = data[index];
-
-        if (edit) console.log(`Block ${index} is being edited`);
 
         return (
           <ScheduleBlock
             {...props}
             context={{
-              text: taskName,
-              edit,
+              text: data[index].taskName,
               onTextChanged: handleBlockTextChanged,
               dayStartHour,
               dayStartMinute,
@@ -82,22 +71,14 @@ export default ScheduleView = (/* {list} */) => {
           />
         );
       }}
-      keyExtractor={(item, index) => `${data.indexOf(item)}`}
+      keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
       onDragEnd={({ data }) => setData(data)}
     />
   );
 
   return (
     <View style={{ display: "flex", flex: 1 }}>
-      {debugText.length > 0 && (
-        <ScrollView style={{ display: debugText ? "block" : "none" }}>
-          <View style={{ backgroundColor: "red", width: "100%" }}>
-            <Text>{debugText}</Text>
-          </View>
-          <ScheduleBlockList />
-        </ScrollView>
-      )}
-      {!debugText && <ScheduleBlockList />}
+      <ScheduleBlockList />
     </View>
   );
 };

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KQfqTVQ4DaUP9OBk0GJoomrnsA5psRLvG0wbUjeLXwBo+cpbJWzsJKIv+wCzKVaef0BEWCCJA2v9zm0jcEyN5A==",
+  "dgSpecHash": "QkIGldnAzsTeFAA9S7q0nUJCQTRjyt3gaZ1mHM9JghdfbdnA+gSvikQ0QDtKaB2ZL1NqTHKenxT20Ecj5uR8EQ==",
   "success": true,
-  "projectFilePath": "D:\\Storage\\Projects\\Mobile\\ReactNative\\SchedulingApp\\SchedulingApp\\SchedulingApp_Tests\\SchedulingApp_Tests.csproj",
+  "projectFilePath": "D:\\Storage\\Projects\\Mobile\\ReactNative\\ASP\\Mobile_SchedulingApp\\SchedulingApp\\SchedulingApp_Tests\\SchedulingApp_Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nathan\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
@@ -53,10 +53,7 @@
     "C:\\Users\\Nathan\\.nuget\\packages\\xunit.core\\2.4.0\\xunit.core.2.4.0.nupkg.sha512",
     "C:\\Users\\Nathan\\.nuget\\packages\\xunit.extensibility.core\\2.4.0\\xunit.extensibility.core.2.4.0.nupkg.sha512",
     "C:\\Users\\Nathan\\.nuget\\packages\\xunit.extensibility.execution\\2.4.0\\xunit.extensibility.execution.2.4.0.nupkg.sha512",
-    "C:\\Users\\Nathan\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.0\\xunit.runner.visualstudio.2.4.0.nupkg.sha512",
-    "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Nathan\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+    "C:\\Users\\Nathan\\.nuget\\packages\\xunit.runner.visualstudio\\2.4.0\\xunit.runner.visualstudio.2.4.0.nupkg.sha512"
   ],
   "logs": []
 }
