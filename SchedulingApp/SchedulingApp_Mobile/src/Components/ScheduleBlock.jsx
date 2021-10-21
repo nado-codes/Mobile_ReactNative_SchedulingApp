@@ -42,6 +42,7 @@ export default ScheduleBlock = ({ index, drag, isActive, context }) => {
   // .. Enable edit mode
   const handleEditTextClicked = () => {
     // onStartEdit(index);
+    setIsEdit(true);
     console.log("Zeet");
   };
 
