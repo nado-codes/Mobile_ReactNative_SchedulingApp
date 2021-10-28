@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, Text } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  CheckBox,
+} from "react-native";
 import DraggableFlatList from "react-native-draggable-flatlist";
-import ScheduleBlock from "../Components/ScheduleBlock";
+// import ScheduleBlock from "../Components/ScheduleBlock";
 
 export default ScheduleView = (/* {list} */) => {
   // Note: .. DUMMY DATA
@@ -16,8 +22,6 @@ export default ScheduleView = (/* {list} */) => {
     60 /
     60;
   const blocks = dayLengthHours * 4;
-
-  console.log(new Date(0, 0, 0, dayStartHour));
 
   const leadZero = (val) => (val < 10 ? "0" + val : val);
 
@@ -53,13 +57,25 @@ export default ScheduleView = (/* {list} */) => {
     return newBlockData.taskName;
   };
 
-  const ScheduleBlockList = () => (
-    <DraggableFlatList
-      data={data}
-      renderItem={(props) => {
+  const renderItem = ({ item, index, drag, isActive }) => (
+    <View>
+      <TouchableOpacity onLongPress={drag}>
+        <Text>{"Some label"}</Text>
+      </TouchableOpacity>
+      <CheckBox value={false} onChange={() => {}} />
+    </View>
+  );
+
+  return (
+    <View style={{ display: "flex", flex: 1 }}>
+      <DraggableFlatList
+        data={data}
+        renderItem={renderItem}
+        /* renderItem={(props) => {
         const { index } = props;
 
-        return (
+        return renderItem();  {
+          
           <ScheduleBlock
             {...props}
             context={{
@@ -68,17 +84,12 @@ export default ScheduleView = (/* {list} */) => {
               dayStartHour,
               dayStartMinute,
             }}
-          />
-        );
-      }}
-      keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
-      onDragEnd={({ data }) => setData(data)}
-    />
-  );
-
-  return (
-    <View style={{ display: "flex", flex: 1 }}>
-      <ScheduleBlockList />
+          /> 
+        };
+      }} */
+        keyExtractor={(item, index) => `${data.indexOf(item)}`} //`draggable-item-${item.key}`}
+        onDragEnd={({ data }) => setData(data)}
+      />
     </View>
   );
 };
